@@ -1,21 +1,39 @@
->>> import add_time
+>>> from add_time import add_time
 >>> add_time("3:30 PM", "2:12")
-5:42 PM
+'5:42 PM'
 >>> add_time("11:55 AM", "3:12")
-3:07 PM next day
-### Expected period to change from AM to PM at 12:00.
+'3:07 PM'
 >>> add_time("2:59 AM", "24:00")
-2:59 AM
+'2:59 AM (next day)'
 >>> add_time("11:59 PM", "24:05")
-12:04 AM (2 days later)
+'12:04 AM (2 days later)'
 >>> add_time("8:16 PM", "466:02")
-6:18 AM (20 days later)
-### Expected adding 0:00 to return the initial time
+'6:18 AM (20 days later)'
 >>> add_time("3:30 PM", "2:12", "Monday")
-5:42 PM, Monday
+'5:42 PM, Monday'
 >>> add_time("2:59 AM", "24:00", "saturDay")
-2:59 AM, Sunday (next day)
+'2:59 AM, Sunday (next day)'
 >>> add_time("11:59 PM", "24:05", "Wednesday")
-"12:04 AM, Friday (2 days later)"
+'12:04 AM, Friday (2 days later)'
 >>> add_time("8:16 PM", "466:02", "tuesday")
-6:18 AM, Monday (20 days later)
+'6:18 AM, Monday (20 days later)'
+>>> add_time("3:00 PM", "3:10")
+'6:10 PM'
+>>> add_time("11:30 AM", "2:32", "Monday")
+'2:02 PM, Monday'
+>>> add_time("11:43 AM", "00:20")
+'12:03 PM'
+>>> add_time("10:10 PM", "3:30")
+'1:40 AM (next day)'
+>>> add_time("11:43 PM", "24:20", "tueSday")
+'12:03 AM, Thursday (2 days later)'
+>>> add_time("6:30 PM", "205:12")
+'7:42 AM (9 days later)'
+>>> add_time("12:00 AM", "12:01")
+'12:01 PM'
+>>> add_time("12:00 PM", "12:01")
+'12:01 AM (next day)'
+>>> add_time("12:00 AM", "12:00")
+'12:00 PM'
+>>> add_time("12:00 PM", "12:00")
+'12:00 AM (next day)'
